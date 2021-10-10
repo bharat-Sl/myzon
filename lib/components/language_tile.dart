@@ -4,12 +4,14 @@ class LanguageTile extends StatelessWidget {
   final Color color;
   final String text1;
   final String text2;
+  final String image;
 
   const LanguageTile({
     Key key,
     this.color = Colors.deepPurpleAccent,
     this.text1,
     this.text2,
+    this.image,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -47,6 +49,16 @@ class LanguageTile extends StatelessWidget {
               ),
             ),
           ),
+          image == null
+              ? SizedBox()
+              : Positioned(
+                  bottom: 10,
+                  right: 10,
+                  child: Container(
+                    width: 20,
+                    height: 20,
+                    child: Image.asset("assets/images/new/$image"),
+                  ))
         ],
       ),
     );
