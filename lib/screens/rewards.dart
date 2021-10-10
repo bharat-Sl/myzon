@@ -10,9 +10,10 @@ class _MyRewardsState extends State<MyRewards> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.black,
         appBar: AppBar(
           toolbarHeight: 0,
-          backgroundColor: Colors.white,
+          backgroundColor: Colors.black,
           elevation: 0,
         ),
         body: Container(
@@ -32,14 +33,20 @@ class _MyRewardsState extends State<MyRewards> {
                       onTap: () {
                         Navigator.of(context).pop();
                       },
-                      child: Icon(Icons.arrow_back)),
+                      child: Icon(
+                        Icons.arrow_back,
+                        color: Colors.yellow[700],
+                      )),
                   Expanded(
                     child: Container(
                       child: Center(
                         child: Text(
                           "My Rewards",
                           style: TextStyle(
-                              fontSize: 22, fontWeight: FontWeight.w600),
+                            fontSize: 22,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.yellow[700],
+                          ),
                         ),
                       ),
                     ),
@@ -49,6 +56,9 @@ class _MyRewardsState extends State<MyRewards> {
                   ),
                 ],
               ),
+              SizedBox(
+                height: 30,
+              ),
               Container(
                 width: MediaQuery.of(context).size.width * 2 / 3,
                 height: MediaQuery.of(context).size.width * 2 / 3,
@@ -56,30 +66,39 @@ class _MyRewardsState extends State<MyRewards> {
                   child: FaIcon(
                     FontAwesomeIcons.dollarSign,
                     size: 150,
+                    color: Colors.yellow[700],
                   ),
-                ),
-              ),
-              SizedBox(
-                height: 40,
-              ),
-              RichText(
-                text: TextSpan(
-                  children: [
-                    TextSpan(
-                        text: "   EARN POINT\n",
-                        style: TextStyle(color: Colors.black, fontSize: 36)),
-                    TextSpan(
-                        text: "FOR EVERY DOLLAR SPENT",
-                        style: TextStyle(color: Colors.black, fontSize: 20))
-                  ],
                 ),
               ),
               SizedBox(
                 height: 20,
               ),
-              Text("150 POINTS = \$10 REWARD"),
+              RichText(
+                textAlign: TextAlign.center,
+                text: TextSpan(
+                  children: [
+                    TextSpan(
+                        text: "EARN POINT\n",
+                        style: TextStyle(
+                            color: Colors.yellow[700],
+                            fontSize: 36,
+                            fontWeight: FontWeight.w600)),
+                    TextSpan(
+                        text: "FOR EVERY DOLLAR SPENT",
+                        style:
+                            TextStyle(color: Colors.yellow[700], fontSize: 16))
+                  ],
+                ),
+              ),
               SizedBox(
-                height: 60,
+                height: 70,
+              ),
+              Text(
+                "150 POINTS = \$10 REWARD",
+                style: TextStyle(color: Colors.white),
+              ),
+              Expanded(
+                child: Container(),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -88,12 +107,13 @@ class _MyRewardsState extends State<MyRewards> {
                     height: 60,
                     width: 160,
                     decoration: BoxDecoration(
-                        border: Border.all(color: Colors.black),
+                        border: Border.all(color: Colors.yellow[700]),
                         borderRadius: BorderRadius.circular(100)),
                     child: Center(
                       child: Text(
                         "EARN",
-                        style: TextStyle(fontSize: 24),
+                        style:
+                            TextStyle(fontSize: 24, color: Colors.yellow[700]),
                       ),
                     ),
                   ),
@@ -101,17 +121,21 @@ class _MyRewardsState extends State<MyRewards> {
                     height: 60,
                     width: 160,
                     decoration: BoxDecoration(
-                        border: Border.all(color: Colors.black),
+                        border: Border.all(color: Colors.yellow[700]),
                         borderRadius: BorderRadius.circular(100)),
                     child: Center(
                       child: Text(
                         "REDEEM",
-                        style: TextStyle(fontSize: 24),
+                        style:
+                            TextStyle(fontSize: 24, color: Colors.yellow[700]),
                       ),
                     ),
                   ),
                 ],
-              )
+              ),
+              SizedBox(
+                height: 20,
+              ),
             ],
           ),
         ));

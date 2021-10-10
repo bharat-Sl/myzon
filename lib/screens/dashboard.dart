@@ -1,9 +1,11 @@
 import 'package:carousel_slider/carousel_controller.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:myzon/screens/cart.dart';
 import 'package:myzon/screens/home.dart';
 import 'package:myzon/screens/language_selector.dart';
 import 'package:myzon/screens/rewards.dart';
+import 'package:myzon/screens/wishlist.dart';
 
 class Dashboard extends StatefulWidget {
   @override
@@ -203,24 +205,33 @@ class _DashboardState extends State<Dashboard> {
                   ),
                 ),
               ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 15.0, vertical: 5),
-                child: Row(
-                  children: [
-                    Container(
-                        height: 40,
-                        width: 40,
-                        child: Image.asset("assets/images/24.png")),
-                    SizedBox(
-                      width: 15,
+              InkWell(
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (BuildContext context) => Cart(),
                     ),
-                    Text(
-                      "View Cart",
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                    )
-                  ],
+                  );
+                },
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 15.0, vertical: 5),
+                  child: Row(
+                    children: [
+                      Container(
+                          height: 40,
+                          width: 40,
+                          child: Image.asset("assets/images/24.png")),
+                      SizedBox(
+                        width: 15,
+                      ),
+                      Text(
+                        "View Cart",
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold),
+                      )
+                    ],
+                  ),
                 ),
               ),
               InkWell(
@@ -252,24 +263,33 @@ class _DashboardState extends State<Dashboard> {
                   ),
                 ),
               ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 15.0, vertical: 5),
-                child: Row(
-                  children: [
-                    Container(
-                        height: 40,
-                        width: 40,
-                        child: Image.asset("assets/images/5.png")),
-                    SizedBox(
-                      width: 15,
+              InkWell(
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (BuildContext context) => Wishlist(),
                     ),
-                    Text(
-                      "My Wishlist",
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                    )
-                  ],
+                  );
+                },
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 15.0, vertical: 5),
+                  child: Row(
+                    children: [
+                      Container(
+                          height: 40,
+                          width: 40,
+                          child: Image.asset("assets/images/5.png")),
+                      SizedBox(
+                        width: 15,
+                      ),
+                      Text(
+                        "My Wishlist",
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold),
+                      )
+                    ],
+                  ),
                 ),
               ),
               Padding(
