@@ -82,9 +82,12 @@ class _CartState extends State<Cart> {
                     SizedBox(
                       width: 5,
                     ),
-                    Text(
-                      "3000 20th st (at Florida St), San Francisco",
-                      style: TextStyle(fontWeight: FontWeight.w600),
+                    Expanded(
+                      child: Text(
+                        "3000 20th st (at Florida St), San Francisco",
+                        style: TextStyle(fontWeight: FontWeight.w600),
+                        overflow: TextOverflow.ellipsis,
+                      ),
                     )
                   ]),
                 ),

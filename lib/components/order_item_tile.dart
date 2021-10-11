@@ -18,7 +18,9 @@ class OrderItemTile extends StatelessWidget {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5),
                     border: Border.all(),
-                    image: DecorationImage(image: NetworkImage(""))),
+                    image: DecorationImage(
+                        image: NetworkImage(
+                            "https://assets.myntassets.com/dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/9038509/2019/7/26/976e5b26-90d7-4899-9dc2-15cae4ecf5cb1564122741391-Roadster-Unisex-Oval-Sunglasses-7521564122740920-1.jpg"))),
               )),
           Expanded(
               flex: 2,

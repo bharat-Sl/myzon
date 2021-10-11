@@ -421,6 +421,7 @@ class _DashboardState extends State<Dashboard> {
                       "HOME",
                       style:
                           TextStyle(fontSize: 10, fontWeight: FontWeight.w700),
+                      textAlign: TextAlign.center,
                     )
                   ],
                 ),
@@ -444,6 +445,7 @@ class _DashboardState extends State<Dashboard> {
                       "ANY STORE",
                       style:
                           TextStyle(fontSize: 10, fontWeight: FontWeight.w700),
+                      textAlign: TextAlign.center,
                     )
                   ],
                 ),
@@ -467,6 +469,7 @@ class _DashboardState extends State<Dashboard> {
                       "QUALITY CLAIM",
                       style:
                           TextStyle(fontSize: 10, fontWeight: FontWeight.w700),
+                      textAlign: TextAlign.center,
                     )
                   ],
                 ),
@@ -490,6 +493,7 @@ class _DashboardState extends State<Dashboard> {
                       "MZS WALLET",
                       style:
                           TextStyle(fontSize: 10, fontWeight: FontWeight.w700),
+                      textAlign: TextAlign.center,
                     )
                   ],
                 ),
@@ -513,6 +517,7 @@ class _DashboardState extends State<Dashboard> {
                       "PROFILE",
                       style:
                           TextStyle(fontSize: 10, fontWeight: FontWeight.w700),
+                      textAlign: TextAlign.center,
                     )
                   ],
                 ),
