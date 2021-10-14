@@ -58,7 +58,8 @@ class LanguageTile extends StatelessWidget {
                     width: 40,
                     height: 40,
                     child: Image.asset("assets/images/new/$image"),
-                  ))
+                  ),
+                ),
         ],
       ),
     );

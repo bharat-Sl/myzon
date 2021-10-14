@@ -130,7 +130,7 @@ class _HomeState extends State<Home> {
                 Container(
                   width: (MediaQuery.of(context).size.width - 50) / 4,
                   child: Text(
-                    "FOOTWEAR",
+                    "ACCESSORIES",
                     style: TextStyle(fontSize: 12, fontWeight: FontWeight.w800),
                     textAlign: TextAlign.center,
                   ),
