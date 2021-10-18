@@ -391,46 +391,6 @@ class _DashboardState extends State<Dashboard>
                     ],
                   ),
                 ),
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 15.0, vertical: 5),
-                  child: Row(
-                    children: [
-                      Container(
-                          height: 40,
-                          width: 40,
-                          child: Image.asset("assets/images/6.png")),
-                      SizedBox(
-                        width: 15,
-                      ),
-                      Text(
-                        "Notification",
-                        style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold),
-                      )
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 15.0, vertical: 5),
-                  child: Row(
-                    children: [
-                      Container(
-                          height: 40,
-                          width: 40,
-                          child: Image.asset("assets/images/26.png")),
-                      SizedBox(
-                        width: 15,
-                      ),
-                      Text(
-                        "Chat Box",
-                        style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold),
-                      )
-                    ],
-                  ),
-                ),
                 Container(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 15.0, vertical: 5),
