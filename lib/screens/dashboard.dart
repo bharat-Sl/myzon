@@ -391,6 +391,9 @@ class _DashboardState extends State<Dashboard>
                     ],
                   ),
                 ),
+                Expanded(
+                  child: Container(),
+                ),
                 Container(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 15.0, vertical: 5),
@@ -430,6 +433,9 @@ class _DashboardState extends State<Dashboard>
                     "Legal",
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
+                ),
+                Expanded(
+                  child: Container(),
                 ),
               ],
             ),
