@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myzon/test/profile.dart';
 
 class EmailAuth extends StatefulWidget {
   @override
@@ -74,12 +75,21 @@ class _EmailAuthState extends State<EmailAuth> {
               textAlign: TextAlign.center,
             ),
             Expanded(child: Container()),
-            Text(
-              "Resend email",
-              style: TextStyle(
-                  color: Colors.amber[500],
-                  fontSize: 19,
-                  fontWeight: FontWeight.w900),
+            InkWell(
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => Profile(),
+                  ),
+                );
+              },
+              child: Text(
+                "Resend email",
+                style: TextStyle(
+                    color: Colors.amber[500],
+                    fontSize: 19,
+                    fontWeight: FontWeight.w900),
+              ),
             ),
             SizedBox(
               height: 20,

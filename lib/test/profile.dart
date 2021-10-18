@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:myzon/test/edit_profile.dart';
+import 'package:myzon/test/manage_address.dart';
 
 class Profile extends StatefulWidget {
   @override
@@ -36,85 +38,100 @@ class _ProfileState extends State<Profile> {
         ),
         body: Column(
           children: [
+            Expanded(child: Container()),
             Center(
-              child: Padding(
-                padding: EdgeInsets.symmetric(
-                  vertical: 70,
-                ),
-                child: Column(
+              child: Column(
+                children: [
+                  CircleAvatar(
+                    radius: 80,
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    "Darlene Reberston",
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.w900,
+                        fontSize: 22),
+                  ),
+                  Text(
+                    "Active status",
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.w700,
+                        fontSize: 15),
+                  ),
+                ],
+              ),
+            ),
+            Expanded(child: Container()),
+            InkWell(
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => EditProfile(),
+                  ),
+                );
+              },
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                child: Row(
                   children: [
-                    CircleAvatar(
-                      radius: 80,
+                    Icon(
+                      Icons.person,
+                      color: Colors.white,
+                      size: 35,
                     ),
                     SizedBox(
-                      height: 10,
+                      width: 15,
                     ),
                     Text(
-                      "Darlene Reberston",
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.w900,
-                          fontSize: 22),
+                      "Edit Profile",
+                      style: TextStyle(color: Colors.white, fontSize: 22),
                     ),
-                    Text(
-                      "Active status",
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.w700,
-                          fontSize: 15),
-                    ),
+                    Expanded(child: Container()),
+                    Icon(
+                      Icons.chevron_right,
+                      color: Colors.white,
+                      size: 65,
+                    )
                   ],
                 ),
               ),
             ),
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: Row(
-                children: [
-                  Icon(
-                    Icons.person,
-                    color: Colors.white,
-                    size: 35,
+            InkWell(
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => ManageAddress(),
                   ),
-                  SizedBox(
-                    width: 15,
-                  ),
-                  Text(
-                    "Edit Profile",
-                    style: TextStyle(color: Colors.white, fontSize: 22),
-                  ),
-                  Expanded(child: Container()),
-                  Icon(
-                    Icons.chevron_right,
-                    color: Colors.white,
-                    size: 65,
-                  )
-                ],
-              ),
-            ),
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: Row(
-                children: [
-                  Icon(
-                    Icons.location_pin,
-                    color: Colors.white,
-                    size: 35,
-                  ),
-                  SizedBox(
-                    width: 15,
-                  ),
-                  Text(
-                    "Manage Address",
-                    style: TextStyle(color: Colors.white, fontSize: 22),
-                  ),
-                  Expanded(child: Container()),
-                  Icon(
-                    Icons.chevron_right,
-                    color: Colors.white,
-                    size: 65,
-                  )
-                ],
+                );
+              },
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.location_pin,
+                      color: Colors.white,
+                      size: 35,
+                    ),
+                    SizedBox(
+                      width: 15,
+                    ),
+                    Text(
+                      "Manage Address",
+                      style: TextStyle(color: Colors.white, fontSize: 22),
+                    ),
+                    Expanded(child: Container()),
+                    Icon(
+                      Icons.chevron_right,
+                      color: Colors.white,
+                      size: 65,
+                    )
+                  ],
+                ),
               ),
             ),
             Container(
@@ -192,6 +209,7 @@ class _ProfileState extends State<Profile> {
                 ],
               ),
             ),
+            Expanded(child: Container()),
           ],
         ),
       ),
