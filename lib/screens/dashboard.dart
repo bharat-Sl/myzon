@@ -35,52 +35,40 @@ class _DashboardState extends State<Dashboard>
           child: Column(
             children: [
               SizedBox(
-                height: 30,
+                height: MediaQuery.of(context).viewPadding.top,
               ),
               Container(
-                height: 100,
+                height: 60,
+                width: MediaQuery.of(context).size.width,
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        InkWell(
-                          onTap: () => _scaffoldKey.currentState.openDrawer(),
-                          child: Container(
-                            width: 30,
-                            child: Image.asset("assets/images/9.png"),
-                          ),
-                        ),
-                        SizedBox(width: 10),
-                        Container(
-                          width: 120,
-                          child: Text("MYZON\nSALES.com"),
-                        ),
-                      ],
+                    InkWell(
+                        onTap: () => _scaffoldKey.currentState.openDrawer(),
+                        child: Icon(
+                          Icons.menu,
+                          size: 30,
+                        )),
+                    Container(
+                      width: 62,
+                      child: Image.asset("assets/images/8.png"),
                     ),
-                    Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Container(
-                          width: 30,
-                          child: Image.asset("assets/images/5.png"),
-                        ),
-                        SizedBox(width: 10),
-                        Container(
-                          width: 30,
-                          child: Image.asset("assets/images/6.png"),
-                        ),
-                        SizedBox(width: 10),
-                        Container(
-                          width: 35,
-                          child: Image.asset("assets/images/7.png"),
-                        ),
-                        Container(
-                          width: 62,
-                          child: Image.asset("assets/images/8.png"),
-                        ),
-                      ],
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Container(
+                      width: 120,
+                      child: Text("MYZON\nSALES.com"),
+                    ),
+                    Expanded(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Icon(Icons.search),
+                          Icon(Icons.notifications_active_rounded),
+                          Icon(Icons.favorite),
+                          Icon(Icons.shopping_cart),
+                        ],
+                      ),
                     ),
                   ],
                 ),
