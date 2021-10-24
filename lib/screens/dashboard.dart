@@ -1,11 +1,17 @@
 import 'package:carousel_slider/carousel_controller.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:myzon/screens/cart.dart';
-import 'package:myzon/screens/home.dart';
-import 'package:myzon/screens/language_selector.dart';
-import 'package:myzon/screens/rewards.dart';
-import 'package:myzon/screens/wishlist.dart';
+import 'package:myzon/Drawer/Profile/profile.dart';
+import 'package:myzon/Drawer/cart.dart';
+import 'package:myzon/Drawer/faq.dart';
+import 'package:myzon/Drawer/language_selector.dart';
+import 'package:myzon/Drawer/privacy_policy.dart';
+import 'package:myzon/Drawer/rewards.dart';
+import 'package:myzon/Drawer/wishlist.dart';
+import 'package:myzon/screens/AnyStore/anystore.dart';
+import 'package:myzon/screens/Home/categories.dart';
+import 'package:myzon/screens/Home/home.dart';
+import 'package:myzon/test/my_cart.dart';
 
 class Dashboard extends StatefulWidget {
   @override
@@ -30,138 +36,151 @@ class _DashboardState extends State<Dashboard>
       length: 5,
       child: Scaffold(
         key: _scaffoldKey,
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10.0),
-          child: Column(
-            children: [
-              SizedBox(
-                height: MediaQuery.of(context).viewPadding.top,
-              ),
-              Container(
-                height: 60,
-                width: MediaQuery.of(context).size.width,
-                child: Row(
-                  children: [
-                    InkWell(
-                        onTap: () => _scaffoldKey.currentState.openDrawer(),
-                        child: Icon(
-                          Icons.menu,
-                          size: 30,
-                        )),
-                    Container(
-                      width: 62,
-                      child: Image.asset("assets/images/8.png"),
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Container(
-                      width: 120,
-                      child: Text("MYZON\nSALES.com"),
-                    ),
-                    Expanded(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Icon(Icons.search),
-                          Icon(Icons.notifications_active_rounded),
-                          Icon(Icons.favorite),
-                          Icon(Icons.shopping_cart),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Expanded(
-                child: TabBarView(
-                    controller: _tabController,
-                    physics: NeverScrollableScrollPhysics(),
-                    children: [
-                      Home(),
-                      Container(),
-                      Container(),
-                      Container(),
-                      Container(),
-                    ]),
-              ),
-              Container(
-                width: MediaQuery.of(context).size.width,
-                height: 60,
-                child: Stack(
-                  children: [
-                    Container(
-                      width: MediaQuery.of(context).size.width,
-                      padding: EdgeInsets.symmetric(horizontal: 10),
-                      height: 60,
-                      child: TabBar(
-                        controller: _tabController,
-                        indicator: UnderlineTabIndicator(
-                            insets: EdgeInsets.symmetric(horizontal: 10),
-                            borderSide: BorderSide(
-                              width: 6.0,
-                              color: Colors.transparent,
+        body: Column(
+          children: [
+            _tabController.index != 1 && _tabController.index != 4
+                ? SizedBox(
+                    height: MediaQuery.of(context).viewPadding.top,
+                  )
+                : SizedBox(),
+            _tabController.index != 1 && _tabController.index != 4
+                ? Container(
+                    height: 60,
+                    width: MediaQuery.of(context).size.width,
+                    child: Row(
+                      children: [
+                        InkWell(
+                            onTap: () => _scaffoldKey.currentState.openDrawer(),
+                            child: Icon(
+                              Icons.menu,
+                              size: 30,
                             )),
-                        labelColor: Colors.green[700],
-                        labelPadding: EdgeInsets.zero,
-                        labelStyle: TextStyle(fontWeight: FontWeight.w900),
-                        unselectedLabelColor: Colors.deepOrange[600],
-                        tabs: [
-                          Tab(
-                            text: "Home",
-                            icon: Icon(
-                              Icons.home,
-                              color: _tabController.index == 0
-                                  ? Colors.green[700]
-                                  : Colors.deepOrange[600],
-                              size: 30,
-                            ),
+                        Container(
+                          width: 62,
+                          child: Image.asset("assets/images/8.png"),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Container(
+                          width: 120,
+                          child: Text("MYZON\nSALES.com"),
+                        ),
+                        Expanded(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Icon(Icons.search),
+                              Icon(Icons.notifications_active_rounded),
+                              Icon(Icons.favorite),
+                              InkWell(
+                                onTap: () {
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (BuildContext context) =>
+                                          MyCart(),
+                                    ),
+                                  );
+                                },
+                                child: Icon(
+                                  Icons.shopping_cart,
+                                ),
+                              ),
+                            ],
                           ),
-                          Tab(
-                            text: "Any Store",
-                            icon: Icon(
-                              Icons.storefront,
-                              color: _tabController.index == 1
-                                  ? Colors.green[700]
-                                  : Colors.deepOrange[600],
-                              size: 30,
-                            ),
-                          ),
-                          SizedBox(
-                            width: 20,
-                          ),
-                          Tab(
-                            text: "Wallet",
-                            icon: Icon(
-                              Icons.account_balance_wallet,
-                              color: _tabController.index == 3
-                                  ? Colors.green[700]
-                                  : Colors.deepOrange[600],
-                              size: 30,
-                            ),
-                          ),
-                          Tab(
-                            text: "Profile",
-                            icon: Icon(
-                              Icons.account_circle,
-                              color: _tabController.index == 4
-                                  ? Colors.green[700]
-                                  : Colors.deepOrange[600],
-                              size: 30,
-                            ),
-                          ),
-                        ],
-                        onTap: (int index) {
-                          _tabController.index = index;
-                          setState(() {});
-                        },
-                      ),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                  )
+                : SizedBox(),
+            Expanded(
+              child: TabBarView(
+                  controller: _tabController,
+                  physics: NeverScrollableScrollPhysics(),
+                  children: [
+                    Home(),
+                    AnyStore(),
+                    Container(),
+                    Container(),
+                    Profile(),
+                  ]),
+            ),
+            Container(
+              width: MediaQuery.of(context).size.width,
+              height: 60,
+              child: Stack(
+                children: [
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    height: 60,
+                    child: TabBar(
+                      controller: _tabController,
+                      indicator: UnderlineTabIndicator(
+                          insets: EdgeInsets.symmetric(horizontal: 10),
+                          borderSide: BorderSide(
+                            width: 6.0,
+                            color: Colors.transparent,
+                          )),
+                      labelColor: Colors.green[700],
+                      labelPadding: EdgeInsets.zero,
+                      labelStyle: TextStyle(fontWeight: FontWeight.w900),
+                      unselectedLabelColor: Colors.deepOrange[600],
+                      tabs: [
+                        Tab(
+                          text: "Home",
+                          icon: Icon(
+                            Icons.home,
+                            color: _tabController.index == 0
+                                ? Colors.green[700]
+                                : Colors.deepOrange[600],
+                            size: 30,
+                          ),
+                        ),
+                        Tab(
+                          text: "Any Store",
+                          icon: Icon(
+                            Icons.storefront,
+                            color: _tabController.index == 1
+                                ? Colors.green[700]
+                                : Colors.deepOrange[600],
+                            size: 30,
+                          ),
+                        ),
+                        SizedBox(
+                          width: 20,
+                        ),
+                        Tab(
+                          text: "Wallet",
+                          icon: Icon(
+                            Icons.account_balance_wallet,
+                            color: _tabController.index == 3
+                                ? Colors.green[700]
+                                : Colors.deepOrange[600],
+                            size: 30,
+                          ),
+                        ),
+                        Tab(
+                          text: "Profile",
+                          icon: Icon(
+                            Icons.account_circle,
+                            color: _tabController.index == 4
+                                ? Colors.green[700]
+                                : Colors.deepOrange[600],
+                            size: 30,
+                          ),
+                        ),
+                      ],
+                      onTap: (int index) {
+                        _tabController.index = index;
+                        setState(() {});
+                      },
+                    ),
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
         drawer: Container(
           width: MediaQuery.of(context).size.width * 4.7 / 7,
@@ -235,24 +254,32 @@ class _DashboardState extends State<Dashboard>
                 SizedBox(
                   height: 10,
                 ),
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 15.0, vertical: 5),
-                  child: Row(
-                    children: [
-                      Container(
-                          height: 40,
-                          width: 40,
-                          child: Image.asset("assets/images/22.png")),
-                      SizedBox(
-                        width: 15,
-                      ),
-                      Text(
-                        "All Categories",
-                        style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold),
-                      )
-                    ],
+                InkWell(
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                          builder: (BuildContext context) => Categories()),
+                    );
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 15.0, vertical: 5),
+                    child: Row(
+                      children: [
+                        Container(
+                            height: 40,
+                            width: 40,
+                            child: Image.asset("assets/images/22.png")),
+                        SizedBox(
+                          width: 15,
+                        ),
+                        Text(
+                          "All Categories",
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold),
+                        )
+                      ],
+                    ),
                   ),
                 ),
                 InkWell(
@@ -371,24 +398,33 @@ class _DashboardState extends State<Dashboard>
                     ),
                   ),
                 ),
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 15.0, vertical: 5),
-                  child: Row(
-                    children: [
-                      Container(
-                          height: 40,
-                          width: 40,
-                          child: Image.asset("assets/images/21.png")),
-                      SizedBox(
-                        width: 15,
+                InkWell(
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (BuildContext context) => Profile(),
                       ),
-                      Text(
-                        "My Account",
-                        style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold),
-                      )
-                    ],
+                    );
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 15.0, vertical: 5),
+                    child: Row(
+                      children: [
+                        Container(
+                            height: 40,
+                            width: 40,
+                            child: Image.asset("assets/images/21.png")),
+                        SizedBox(
+                          width: 15,
+                        ),
+                        Text(
+                          "My Account",
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold),
+                        )
+                      ],
+                    ),
                   ),
                 ),
                 Expanded(
@@ -402,20 +438,40 @@ class _DashboardState extends State<Dashboard>
                   color: Colors.red,
                 ),
                 SizedBox(height: 20),
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 8.0, vertical: 2.0),
-                  child: Text(
-                    "Help Center",
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                InkWell(
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (BuildContext context) => FAQ(),
+                      ),
+                    );
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 8.0, vertical: 2.0),
+                    child: Text(
+                      "Help Center",
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 8.0, vertical: 2.0),
-                  child: Text(
-                    "Privacy Policy",
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                InkWell(
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (BuildContext context) => PrivacyPolicy(),
+                      ),
+                    );
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 8.0, vertical: 2.0),
+                    child: Text(
+                      "Privacy Policy",
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
                   ),
                 ),
                 Padding(

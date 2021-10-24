@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:myzon/Authentication/email_auth.dart';
 import 'package:myzon/test/order_complete.dart';
+import 'package:myzon/Authentication/sign_in.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,7 +20,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: OrderComplete(),
+      home: SignIn(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }

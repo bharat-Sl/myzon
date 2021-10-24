@@ -2,6 +2,8 @@ import 'package:expansion_tile_card/expansion_tile_card.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../components/faq_database.dart';
+
 class FAQ extends StatefulWidget {
   @override
   _FAQState createState() => _FAQState();
@@ -133,147 +135,35 @@ class _FAQState extends State<FAQ> {
               ],
             ),
           ),
-          ExpansionFAQTile(
-            title: RichText(
-              text: TextSpan(
+          Expanded(
+            child: SingleChildScrollView(
+              child: Column(
                 children: [
-                  TextSpan(
-                    text: "What should I do if I receive a ",
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 17,
-                    ),
-                  ),
-                  TextSpan(
-                    text: "damaged goods?",
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.w900,
-                      fontSize: 17,
-                    ),
-                  ),
+                  ...FAQs.map((e) {
+                    return Column(
+                      children: [
+                        ExpansionFAQTile(
+                          title: Text(
+                            e.keys.first,
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 17,
+                            ),
+                          ),
+                          discription: e[e.keys.first],
+                        ),
+                        Container(
+                          width: MediaQuery.of(context).size.width,
+                          height: 3,
+                          color: Colors.grey[300],
+                        ),
+                      ],
+                    );
+                  })
                 ],
               ),
             ),
           ),
-          Container(
-            width: MediaQuery.of(context).size.width,
-            height: 3,
-            color: Colors.grey[300],
-          ),
-          ExpansionFAQTile(
-            title: RichText(
-              text: TextSpan(
-                children: [
-                  TextSpan(
-                    text: "What should I do if I receive a ",
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 17,
-                    ),
-                  ),
-                  TextSpan(
-                    text: "damaged goods?",
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.w900,
-                      fontSize: 17,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          Container(
-            width: MediaQuery.of(context).size.width,
-            height: 3,
-            color: Colors.grey[300],
-          ),
-          ExpansionFAQTile(
-            title: RichText(
-              text: TextSpan(
-                children: [
-                  TextSpan(
-                    text: "What should I do if I receive a ",
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 17,
-                    ),
-                  ),
-                  TextSpan(
-                    text: "damaged goods?",
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.w900,
-                      fontSize: 17,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          Container(
-            width: MediaQuery.of(context).size.width,
-            height: 3,
-            color: Colors.grey[300],
-          ),
-          ExpansionFAQTile(
-            title: RichText(
-              text: TextSpan(
-                children: [
-                  TextSpan(
-                    text: "What should I do if I receive a ",
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 17,
-                    ),
-                  ),
-                  TextSpan(
-                    text: "damaged goods?",
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.w900,
-                      fontSize: 17,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          Container(
-            width: MediaQuery.of(context).size.width,
-            height: 3,
-            color: Colors.grey[300],
-          ),
-          ExpansionFAQTile(
-            title: RichText(
-              text: TextSpan(
-                children: [
-                  TextSpan(
-                    text: "What should I do if I receive a ",
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 17,
-                    ),
-                  ),
-                  TextSpan(
-                    text: "damaged goods?",
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.w900,
-                      fontSize: 17,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          Container(
-            width: MediaQuery.of(context).size.width,
-            height: 3,
-            color: Colors.grey[300],
-          ),
-          Expanded(child: Container()),
           InkWell(
             onTap: () {
               launch("tel:7084188503");
@@ -331,18 +221,26 @@ class _FAQState extends State<FAQ> {
 
 class ExpansionFAQTile extends StatefulWidget {
   final Widget title;
+  final String discription;
 
-  const ExpansionFAQTile({Key key, this.title}) : super(key: key);
+  const ExpansionFAQTile({Key key, this.title, this.discription})
+      : super(key: key);
   @override
   _ExpansionFAQTileState createState() => _ExpansionFAQTileState();
 }
 
 class _ExpansionFAQTileState extends State<ExpansionFAQTile> {
+  bool expanded = false;
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(top: 10, left: 10, right: 10),
       child: ExpansionTileCard(
+        onExpansionChanged: (val) {
+          setState(() {
+            expanded = val;
+          });
+        },
         trailing: Container(
           width: 40,
           height: 40,
@@ -352,7 +250,9 @@ class _ExpansionFAQTileState extends State<ExpansionFAQTile> {
           ),
           child: Center(
             child: Icon(
-              Icons.arrow_forward_outlined,
+              expanded
+                  ? Icons.arrow_downward_outlined
+                  : Icons.arrow_forward_outlined,
               color: Colors.white,
               size: 26,
             ),
@@ -368,7 +268,7 @@ class _ExpansionFAQTileState extends State<ExpansionFAQTile> {
           Container(
             width: MediaQuery.of(context).size.width - 70,
             height: 40,
-            child: Text("Discription"),
+            child: Text(widget.discription),
           ),
         ],
       ),
